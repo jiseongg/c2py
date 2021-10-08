@@ -1,12 +1,7 @@
-void printer () {
-  int i;
-}
-
-int hi () {
+void print_1() {
   int a;
-  int b;
-
-  b = a;
+  a = 1;
+  print (a);
 }
 
 int main() {

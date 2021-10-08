@@ -1,5 +1,5 @@
 
-c2py: c.cmo lexer.cmo parser.cmo c2py.cmo
+c2py: lexer.cmo parser.cmo c.cmo python.cmo translator.cmo c2py.cmo
 	ocamlc -o $@ $^
 
 c2py.cmo: c2py.ml
@@ -24,6 +24,12 @@ lexer.ml: lexer.mll
 	ocamllex lexer.mll
 
 c.cmo: c.ml
+	ocamlc -c $^
+
+python.cmo: python.ml
+	ocamlc -c $^
+
+translator.cmo: translator.ml
 	ocamlc -c $^
 
 clean:

@@ -16,9 +16,10 @@ let main () =
     try
       let file_channel = open_in !src in
       let lexbuf = Lexing.from_channel file_channel in
-      let s_pgm = Parser.program Lexer.start lexbuf in
-      let _ = print_endline "== source program ==" in
-      C.pp s_pgm 
+      let c_pgm = Parser.program Lexer.start lexbuf in
+      let _ = print_endline "== translated program ==" in
+      let py_pgm = Translator.translate c_pgm in
+      Python.pp py_pgm
     with (Failure s) -> print_endline (!src ^ ": " ^ s)
 
 let _ = main ()
